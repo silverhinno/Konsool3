@@ -1,0 +1,48 @@
+using System;
+
+namespace Part14
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string UserChoice = string.Empty;
+            //annab märku, et tulevane märksõna UserChoice tuleb automaatselt tühja väärtusena
+            do
+            //presenteerib kasutajale, kuna eelmine command ei andnud funktsioonile tõest väärtust
+            {
+                Console.WriteLine("Please enter your target?");
+                //cmd-sse tuleb küsimus
+                int UserTarget = int.Parse(Console.ReadLine());
+                //UserTarget convertitakse numbriliseks väärtuseks, kui kirjutatakse seda cmd-sse
+                int Start = 0;
+                //muutuja Start alustab väärtusega 0
+                while (Start <= UserTarget)
+                    //kui start on võrdne/väiksem kui UserTarget, siis jätkab programm edasi
+                {
+                    Console.Write(Start + " ");
+                    //ühte ritta tulevad paaris arvud
+                    Start = Start + 2;
+                }
+                //alustab uut protsessi
+                do
+                {
+                    Console.WriteLine("Do you want to continue - Yes or No?");
+                    //uus küsimus cmd-s
+
+                    UserChoice = Console.ReadLine().ToUpper();
+                    //muudab kõik sisestatud asjad suurteks tähtedeks
+                    if (UserChoice != "YES" && UserChoice != "NO")
+                        //kui sisestatud väärtus ei ole nii YES kui ka NO, annab järgmise teksti
+                    {
+                        Console.WriteLine("Invalid Choice, please say Yes or No");
+                        //eelmine selgitus
+                    }
+                } while (UserChoice != "YES" && UserChoice != "NO");
+                    //kui sisestatud väärtus pole nii YES kui ka NO, alustab uuesti loopi reast 28
+            } while (UserChoice == "YES");
+            //kui viimane sisestatud väärtus võrdub YESiga, algab programm algusest peale, vastasel juhul läheb kinni
+        }
+    }
+}
+
