@@ -1,0 +1,35 @@
+using System;
+
+namespace Part16
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Program.EvenNumbers(30);
+            //kõik read seoses Program või classidega on minu jaoks segane, proovin tunnis üle küsida
+
+            Program P = new Program();
+            int Sum = P.Add(10, 20);
+
+            Console.WriteLine("Sum = {0}", Sum);
+        }
+
+        public int Add(int FN, int SN)
+        {
+            return FN + SN;
+        }
+
+        public static void EvenNumbers(int Target)
+        {
+            int Start = 0;
+
+            while(Start <= Target)
+            {
+                Console.WriteLine(Start);
+                Start = Start + 2;
+                //sama funktsioon, mida viimases paaris osas on kasutatud näitena
+            }
+        }
+    }
+}
