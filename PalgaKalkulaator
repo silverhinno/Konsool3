@@ -1,0 +1,72 @@
+using System;
+
+namespace PalgaKalkulaator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello!!!");
+            Console.WriteLine("Please enter your monthly salary!");
+            double brutoSalary = Convert.ToDouble(Console.ReadLine());
+
+            if (brutoSalary <= 1200 && brutoSalary >= 500)
+            {
+                RangeFrom500to1200(brutoSalary);
+            }
+            else if (brutoSalary <= 2099 && brutoSalary >= 1201)
+            {
+                RangeFrom1200to2100(brutoSalary);
+            }
+            else
+            {
+                over2100(brutoSalary);
+            }
+
+            Console.WriteLine("And your bruto salary is " + brutoSalary);
+        }
+
+        
+
+
+        static void RangeFrom500to1200(double brutoSalary)
+        {
+            double pensionFond = brutoSalary * 0.02;
+            double unemploymentTax = brutoSalary * 0.016;
+            double Tax = (brutoSalary - 500 - pensionFond - unemploymentTax) * 0.2;
+            double RangeFrom500to1200 = brutoSalary - pensionFond - unemploymentTax - Tax;
+            Console.WriteLine("Pension Fond is " + pensionFond);
+            Console.WriteLine("Unemployment tax is " + unemploymentTax);
+            Console.WriteLine("Tax-free income is " + Tax);
+            Console.WriteLine("Net salary is " + RangeFrom500to1200);
+            return;
+        }
+
+        static void RangeFrom1200to2100(double brutoSalary)
+        {
+            double pensionFond = brutoSalary * 0.02;
+            double unemploymentTax = brutoSalary * 0.016;
+            double TaxFreeIncome = 500 - 0.55556 * (brutoSalary - 1200);
+            double Tax = (brutoSalary - pensionFond - unemploymentTax - TaxFreeIncome) * 0.2;
+            double RangeFrom1200to2100 = brutoSalary - pensionFond - unemploymentTax - Tax;
+            Console.WriteLine("Pension Fond is " + pensionFond);
+            Console.WriteLine("Unemployment tax is " + unemploymentTax);
+            Console.WriteLine("Tax-free income is " + Tax);
+            Console.WriteLine("Net salary is " + RangeFrom1200to2100);
+            return;
+        }
+
+        static void over2100(double brutoSalary)
+        {
+            double pensionFond = brutoSalary * 0.02;
+            double unemploymentTax = brutoSalary * 0.016;
+            double Tax = brutoSalary * 0.1928;
+            double over2100 = brutoSalary - pensionFond - unemploymentTax - Tax;
+            Console.WriteLine("Pension Fond is " + pensionFond);
+            Console.WriteLine("Unemployment tax is " + unemploymentTax);
+            Console.WriteLine("Tax-free income is " + Tax);
+            Console.WriteLine("Net salary is " + over2100);
+            return;
+        }
+    }
+}
